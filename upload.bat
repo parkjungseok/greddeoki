@@ -1,3 +1,3 @@
 git add --all
-git commit -m "¿¬½À"
+git commit -m "gps TEST"
 git push -u origin master
