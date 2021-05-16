@@ -1,3 +1,3 @@
 git add --all
-git commit -m "upload.bat 파일생성"
+git commit -m "연습"
 git push -u origin master
