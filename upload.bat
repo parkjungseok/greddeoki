@@ -1,3 +1,3 @@
 git add --all
-git commit -m "upload.bat íŒŒì¼ìƒì„±"
+git commit -m "upload.bat ÆÄÀÏ»ı¼º"
 git push -u origin master
