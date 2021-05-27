@@ -1,4 +1,5 @@
 #include <SoftwareSerial.h>
+
 #include <TinyGPS.h>
 
 int blueTx = 2; //Tx (보내는핀 설정)
@@ -27,19 +28,34 @@ void setup()
 
 void loop()
 {
-  while (mySerial.available()) //mySerial 값이 있으면
+
+  /*while(ss.available())
   {
-    Serial.println("asd");
-    char myChar = (char)mySerial.read();  //mySerial int형식의 값을 char형식으로 변환
-    myString += myChar; //수신되는 문자열을 myString에 모두 붙임 (1바이트씩 전송되는 것을 모두 붙임)
+    Serial.println("GPS On");
+    char gpsData = (char)ss.read();
+    gpsData += gpsData;
+    if(mySerial.available())
+    {
+      mySerial.write(gpsData);
+    }
+    delay(5);
+  }*/
+  
+  /*while (Serial.available()) //mySerial 값이 있으면*/
+  {
+    /*Serial.println("asd");*/
+    mySerial.write(1);
+    /* char myChar = (char)mySerial.read();  //mySerial int형식의 값을 char형식으로 변환
+    myString += myChar;*/ //수신되는 문자열을 myString에 모두 붙임 (1바이트씩 전송되는 것을 모두 붙임)
     delay(5);           //수신 문자열 끊김 방지
   }
-  if(myString.length() > 0)
+  
+  /*if(myString.length() > 0)
   {
-    mySerial.write(myString);
+    mySerial.write(1);
   }
-
- 
+*/
+ /* 
   if (myString.length() > 0) {
     Serial.println(myString);
     if (myString.equals("def"))
@@ -54,5 +70,6 @@ void loop()
    else {
     digitalWrite(13, LOW);  //LED OFF
     myString = "";
-   
-  }
+    
+  }*/
+}
