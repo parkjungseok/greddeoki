@@ -6,14 +6,18 @@ int blueRx = 3; //Rx (받는핀 설정)
 SoftwareSerial mySerial(blueTx, blueRx);  //시리얼 통신을 위한 객체선언
 String myString = ""; //받는 문자열
 
+
 TinyGPS gps;
-SoftwareSerial ss(11 , 12 );
+SoftwareSerial ss(11, 12);
 
 void setup()
 {
   Serial.begin(9600);
   ss.begin(9600);
+
   Serial.println();
+
+
   Serial.begin(9600);   //시리얼모니터
   mySerial.begin(9600); //블루투스 시리얼 개방
   pinMode(13, OUTPUT);  //Pin 13을 OUTPUT으로 설정 (LED ON/OFF)
@@ -28,7 +32,7 @@ void loop()
     myString += myChar; //수신되는 문자열을 myString에 모두 붙임 (1바이트씩 전송되는 것을 모두 붙임)
     delay(5);           //수신 문자열 끊김 방지
   }
-  if (myString.length() > 0) {
+    if (myString.length() > 0) {
     Serial.println(myString);
     if (myString.equals("def"))
     {
@@ -43,17 +47,22 @@ void loop()
     digitalWrite(13, LOW);  //LED OFF
     myString = "";
   }
+ 
+
+
+
+
   
   bool newData = false;
   unsigned long chars;
   unsigned short sentences, failed;
+
 
   for (unsigned long start = millis(); millis() - start < 1000;)
   {
     while (ss.available())
     {
       char c = ss.read();
-      Serial.println(c);
 
       if (gps.encode(c)) 
         newData = true;
