@@ -15,16 +15,42 @@ void setup()
   Serial.begin(9600);
   ss.begin(9600);
 
+  
   Serial.println();
 
 
-  Serial.begin(9600);   //시리얼모니터
+ 
   mySerial.begin(9600); //블루투스 시리얼 개방
   pinMode(13, OUTPUT);  //Pin 13을 OUTPUT으로 설정 (LED ON/OFF)
+  Serial.println("Project Start");
 }
+int mode = 0 ;
 
 void loop()
 {
+#if false
+  if (mySerial.available()) {       
+    Serial.write(mySerial.read());  //블루투스측 내용을 시리얼모니터에 출력
+  }
+  if (Serial.available()) {         
+    mySerial.write(Serial.read());  //시리얼 모니터 내용을 블루추스 측에 WRITE
+  //  Serial.write(Serial.read());  //시리얼 모니터 내용을 블루추스 측에 WRITE
+  }
+ /* switch(mode){
+  case 0 :mySerial.write("AT");mode++;break;    
+  case 1 :mySerial.write("AT\r\n");mode++;break;
+  case 2 :mySerial.write("AT\n");mode++;break;
+  case 3 :mySerial.write("AT\r");mode++;break;
+  case 4 :mySerial.write("AT\n\r");mode = 0;break;
+  }
+  */
+  
+  
+  delay(500);
+
+
+
+#else
   while (mySerial.available()) //mySerial 값이 있으면
   {
     //Serial.println("asd");
@@ -93,4 +119,5 @@ void loop()
   mySerial.println(failed);
   if (chars == 0)
     mySerial.println("** No characters received from GPS: check wiring **");
+#endif    
 }
