@@ -30,7 +30,7 @@ void loop()
   }
   if (myString.length() > 0) {
     Serial.println(myString);
-    if (myString.equals("def"))
+    if (myString.equals("on"))
     {
       digitalWrite(13, HIGH); //LED ON
      }
@@ -39,10 +39,10 @@ void loop()
       myString = "";
     }
    } 
-   else {
-    digitalWrite(13, LOW);  //LED OFF
-    myString = "";
-  }
+   //else {
+    //digitalWrite(13, LOW);  //LED OFF
+   // myString = "";
+ // }
   
   bool newData = false;
   unsigned long chars;
